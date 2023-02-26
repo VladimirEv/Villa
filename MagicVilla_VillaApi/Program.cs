@@ -1,8 +1,13 @@
+using Microsoft.Extensions.DependencyInjection;
+using MagicVilla_VillaApi;
+using Microsoft.AspNetCore.Mvc.Formatters;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddMvc();
+builder.Services.AddControllers().AddNewtonsoftJson();
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
