@@ -99,7 +99,7 @@ namespace MagicVilla_VillaApi.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPut("{id:int}", Name = "UpdateVilla")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult UpdateVilla (int id, [FromBody] VillaDTO villaDTO)
