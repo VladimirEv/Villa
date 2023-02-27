@@ -3,6 +3,7 @@ using MagicVilla_VillaApi.Models;
 using MagicVilla_VillaApi.Models.Models.DTO;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MagicVilla_VillaApi.Controllers
 {
@@ -70,10 +71,10 @@ namespace MagicVilla_VillaApi.Controllers
                 return BadRequest(villaDTO);
             }
 
-            if(villaDTO.Id > 0) 
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+            //if(villaDTO.Id < 0) 
+            //{
+            //    return StatusCode(StatusCodes.Status500InternalServerError);
+            //}
 
             Villa model = new()
             {
@@ -162,7 +163,7 @@ namespace MagicVilla_VillaApi.Controllers
                 return BadRequest();
             }
 
-            var villa = _db.Villas.FirstOrDefault(i => i.Id == id);
+            var villa = _db.Villas.AsNoTracking().FirstOrDefault(i => i.Id == id);
 
             VillaDTO villaDTO = new()
             {
