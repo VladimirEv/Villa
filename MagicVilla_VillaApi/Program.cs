@@ -1,3 +1,5 @@
+using AutoMapper;
+using MagicVilla_VillaApi;
 using MagicVilla_VillaApi.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 ////при запуске приложения запускаем UseSerilog()
 //builder.Host.UseSerilog();  
+
+builder.Services.AddAutoMapper(typeof(MappingConfig));
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
