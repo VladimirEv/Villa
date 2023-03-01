@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MagicVilla_VillaApi.Models.Models.DTO
+namespace MagicVilla_VillaApi.Models.Models.DTO.VillaDTO.VillaDTO
 {
-    public class VillaCreateDTO 
+    public class VillaCreateDTO
     {
         [Required]
         [MaxLength(30)]

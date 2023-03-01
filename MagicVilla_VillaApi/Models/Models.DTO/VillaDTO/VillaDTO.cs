@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MagicVilla_VillaApi.Models.Models.DTO
+namespace MagicVilla_VillaApi.Models.Models.DTO.VillaDTO.VillaDTO
 {
-    public class VillaDTO //date transfer object
+    public class VillaNumberCreateDTO //date transfer object
     {
         public int Id { get; set; }
         [Required]
