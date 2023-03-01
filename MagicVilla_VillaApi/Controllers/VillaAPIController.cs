@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using MagicVilla_VillaApi.Models.Models.DTO.VillaDTO;
 using MagicVilla_VillaApi.Models;
-using MagicVilla_VillaApi.Models.Models.DTO.VillaDTO.VillaDTO;
 using MagicVilla_VillaApi.Repository.IRepository;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -32,7 +32,7 @@ namespace MagicVilla_VillaApi.Controllers
             try
             { 
                 IEnumerable<Villa> villaList = await _dbVilla.GetAllAsync();
-                _response.Result = _mapper.Map<List<VillaNumberCreateDTO>>(villaList);
+                _response.Result = _mapper.Map<List<VillaDTO>>(villaList);
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response);
             }
@@ -66,7 +66,7 @@ namespace MagicVilla_VillaApi.Controllers
                     return NotFound(_response);
                 }
 
-                _response.Result = _mapper.Map<VillaNumberCreateDTO>(villa);
+                _response.Result = _mapper.Map<VillaDTO>(villa);
                 _response.StatusCode = HttpStatusCode.OK;
                 return Ok(_response); 
             }
@@ -100,7 +100,7 @@ namespace MagicVilla_VillaApi.Controllers
                Villa villa = _mapper.Map<Villa>(villaCreateDTO);
                
                await _dbVilla.CreateAsync(villa);              
-               _response.Result = _mapper.Map<VillaNumberCreateDTO>(villa);
+               _response.Result = _mapper.Map<VillaDTO>(villa);
                _response.StatusCode = HttpStatusCode.Created;               
                return CreatedAtRoute("GetVilla", new { id = villa.Id}, _response);
             }
