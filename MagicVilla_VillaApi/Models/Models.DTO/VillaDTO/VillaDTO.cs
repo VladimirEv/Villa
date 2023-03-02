@@ -2,7 +2,7 @@
 
 namespace MagicVilla_VillaApi.Models.Models.DTO.VillaDTO
 {
-    public class VillaNumberCreateDTO //date transfer object
+    public class VillaDTO 
     {
         public int Id { get; set; }
         [Required]
