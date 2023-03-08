@@ -13,9 +13,10 @@ namespace MagicVilla_Web.Services
 
         public IHttpClientFactory httpClient { get; set; } //для обращения к API
 
-        public BaseService()
+        public BaseService(IHttpClientFactory httpClient)
         {
             this.responseModel = new ();
+            this.httpClient = httpClient;
         }
 
         public async Task<T> SendAsync<T>(APIRequest apiRequest)
