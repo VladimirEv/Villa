@@ -23,9 +23,9 @@ namespace MagicVilla_Web.Services
         {
             return SendAsync<T>(new APIRequest()
             {
-                APIType = SD.APIType.POST,
+                APIType = APIType.POST,
                 Data = dto,
-                Url = villaUrl + "/ai/VillaAPI"
+                Url = villaUrl + "/api/VillaAPI"
             });
         }
 
@@ -33,8 +33,8 @@ namespace MagicVilla_Web.Services
         {
             return SendAsync<T>(new APIRequest()
             {
-                APIType = SD.APIType.DELETE,
-                Url = villaUrl + "/ai/VillaAPI"+id
+                APIType = APIType.DELETE,
+                Url = villaUrl + "/api/VillaAPI" + id
             });
         }
 
@@ -42,8 +42,8 @@ namespace MagicVilla_Web.Services
         {
             return SendAsync<T>(new APIRequest()
             {
-                APIType = SD.APIType.GET,
-                Url = villaUrl + "/ai/VillaAPI"
+                APIType = APIType.GET,
+                Url = villaUrl + "/api/VillaAPI"
             });
         }
 
@@ -51,8 +51,8 @@ namespace MagicVilla_Web.Services
         {
             return SendAsync<T>(new APIRequest()
             {
-                APIType = SD.APIType.GET,
-                Url = villaUrl + "/ai/VillaAPI" + id
+                APIType = APIType.GET,
+                Url = villaUrl + "/api/VillaAPI" + id
             });
         }
 
@@ -60,9 +60,9 @@ namespace MagicVilla_Web.Services
         {
             return SendAsync<T>(new APIRequest()
             {
-                APIType = SD.APIType.PUT,
+                APIType = APIType.PUT,
                 Data = dto,
-                Url = villaUrl + "/ai/VillaAPI"+ dto.Id
+                Url = villaUrl + "/api/VillaAPI" + dto.Id
             });
         }
     }

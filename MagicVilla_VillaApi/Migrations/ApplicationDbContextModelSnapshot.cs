@@ -31,18 +31,15 @@ namespace MagicVilla_VillaApi.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Amenity")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -63,14 +60,14 @@ namespace MagicVilla_VillaApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Villas", (string)null);
+                    b.ToTable("Villas");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 1, 22, 3, 54, 254, DateTimeKind.Local).AddTicks(1721),
+                            CreatedDate = new DateTime(2023, 3, 11, 17, 30, 37, 902, DateTimeKind.Local).AddTicks(6426),
                             Details = "Master bedroom of 230 m2 with open air bathroom including separated rain shower, bath tub for 2 and completed wardrobe · 4 suites built and designed",
                             ImageUrl = "https://www.houzz.ru/foto/castellina-1272-model-home-phvw-vp~22592068",
                             Name = "Royal villa",
@@ -83,7 +80,7 @@ namespace MagicVilla_VillaApi.Migrations
                         {
                             Id = 2,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 1, 22, 3, 54, 254, DateTimeKind.Local).AddTicks(1735),
+                            CreatedDate = new DateTime(2023, 3, 11, 17, 30, 37, 902, DateTimeKind.Local).AddTicks(6440),
                             Details = "Master bedroom of 280 m2 with open air bathroom including separated rain shower, bath tub for 3 and completed wardrobe · 5 suites built and designed",
                             ImageUrl = "https://www.houzz.ru/foto/private-residence-the-estuary-naples-fl-phvw-vp~6599751",
                             Name = "Viki villa",
@@ -96,7 +93,7 @@ namespace MagicVilla_VillaApi.Migrations
                         {
                             Id = 3,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 1, 22, 3, 54, 254, DateTimeKind.Local).AddTicks(1736),
+                            CreatedDate = new DateTime(2023, 3, 11, 17, 30, 37, 902, DateTimeKind.Local).AddTicks(6442),
                             Details = "Master bedroom of 370 m2 with open air bathroom including separated rain shower, bath tub for 4 and completed wardrobe · 4 suites built and designed",
                             ImageUrl = "https://www.google.com/search?q=Details+for+Villa&rlz=1C1GCEA_enBY909BY909&oq=Details+for+Villa&aqs=chrome..69i57j0i15i22i30i625j0i15i22i30j0i22i30j0i15i22i30.5191j0j7&sourceid=chrome&ie=UTF-8#imgrc=t_-GUyvZjXGWBM",
                             Name = "Golden Sand villa",
@@ -109,7 +106,7 @@ namespace MagicVilla_VillaApi.Migrations
                         {
                             Id = 4,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 1, 22, 3, 54, 254, DateTimeKind.Local).AddTicks(1738),
+                            CreatedDate = new DateTime(2023, 3, 11, 17, 30, 37, 902, DateTimeKind.Local).AddTicks(6444),
                             Details = "Master bedroom of 480 m2 with open air bathroom including separated rain shower, bath tub for 5 and completed wardrobe · 4 suites built and designed",
                             ImageUrl = "https://www.google.com/search?q=Details+for+Villa&rlz=1C1GCEA_enBY909BY909&oq=Details+for+Villa&aqs=chrome..69i57j0i15i22i30i625j0i15i22i30j0i22i30j0i15i22i30.5191j0j7&sourceid=chrome&ie=UTF-8#imgrc=t_-GUyvZjXGWBM",
                             Name = "Viliam villa",
@@ -122,7 +119,7 @@ namespace MagicVilla_VillaApi.Migrations
                         {
                             Id = 5,
                             Amenity = "",
-                            CreatedDate = new DateTime(2023, 3, 1, 22, 3, 54, 254, DateTimeKind.Local).AddTicks(1740),
+                            CreatedDate = new DateTime(2023, 3, 11, 17, 30, 37, 902, DateTimeKind.Local).AddTicks(6445),
                             Details = "Master bedroom of 580 m2 with open air bathroom including separated rain shower, bath tub for 7 and completed wardrobe · 4 suites built and designed",
                             ImageUrl = "https://www.google.com/search?q=Details+for+Villa&rlz=1C1GCEA_enBY909BY909&oq=Details+for+Villa&aqs=chrome..69i57j0i15i22i30i625j0i15i22i30j0i22i30j0i15i22i30.5191j0j7&sourceid=chrome&ie=UTF-8#imgrc=t_-GUyvZjXGWBM",
                             Name = "Teritorial villa",
@@ -142,15 +139,30 @@ namespace MagicVilla_VillaApi.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SpecialDetails")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("VillaID")
+                        .HasColumnType("int");
+
                     b.HasKey("VillaNo");
 
-                    b.ToTable("VillaNumbers", (string)null);
+                    b.HasIndex("VillaID");
+
+                    b.ToTable("VillaNumbers");
+                });
+
+            modelBuilder.Entity("MagicVilla_VillaApi.Models.VillaNumber", b =>
+                {
+                    b.HasOne("MagicVilla_VillaApi.Models.Villa", "Villa")
+                        .WithMany()
+                        .HasForeignKey("VillaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Villa");
                 });
 #pragma warning restore 612, 618
         }
