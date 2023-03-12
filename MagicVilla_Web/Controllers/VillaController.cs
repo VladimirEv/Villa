@@ -49,7 +49,7 @@ namespace MagicVilla_Web.Controllers
                     return RedirectToAction(nameof(IndexVilla));
 				}
 			}
-			return View("IndexVilla");
+			return View(villaCreateDTO);
 		}
 
         [HttpGet]
@@ -76,7 +76,31 @@ namespace MagicVilla_Web.Controllers
                     return RedirectToAction(nameof(IndexVilla));
                 }
             }
-            return View("IndexVilla");
+            return View(villaUpdateDTO);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteVilla(int villaId)
+        {
+            var responce = await _villaService.GetAsync<APIResponse>(villaId);
+            if (responce != null && responce.IsSuccess)
+            {
+                //дессериализуем объект в объект типа VillaDTO			
+                VillaDTO model = JsonConvert.DeserializeObject<VillaDTO>(Convert.ToString(responce.Result));
+                return View(model);
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteVilla(VillaDTO villaDTO)
+        {
+                var responce = await _villaService.DeleteAsync<APIResponse>(villaDTO.Id);
+                if (responce != null && responce.IsSuccess)
+                {
+                    return RedirectToAction(nameof(IndexVilla));
+                }
+            return View(villaDTO);
         }
     }
 }
