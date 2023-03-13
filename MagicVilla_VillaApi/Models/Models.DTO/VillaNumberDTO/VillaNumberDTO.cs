@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
+using VLDTO = MagicVilla_VillaApi.Models.Models.DTO.VillaDTO;
 namespace MagicVilla_VillaApi.Models.Models.DTO.VillaNumberDTO
 {
     public class VillaNumberDTO 
@@ -13,7 +12,6 @@ namespace MagicVilla_VillaApi.Models.Models.DTO.VillaNumberDTO
 
         public string SpecialDetails { get; set; }
 
-        public DateTime CreatedDate { get; set; }   
-        public DateTime UpdatedDate { get; set;}
+        public VLDTO.VillaDTO Villa { get; set; }
     }
 }

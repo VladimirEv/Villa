@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using VLDTO = MagicVilla_Web.Models.VillaDTO;
 
 namespace MagicVilla_Web.Models.VillaNumberDTO
 {
@@ -13,7 +13,7 @@ namespace MagicVilla_Web.Models.VillaNumberDTO
 
         public string SpecialDetails { get; set; }
 
-        public DateTime CreatedDate { get; set; }   
-        public DateTime UpdatedDate { get; set;}
-    }
+		public VLDTO.VillaDTO Villa { get; set; }
+
+	}
 }
