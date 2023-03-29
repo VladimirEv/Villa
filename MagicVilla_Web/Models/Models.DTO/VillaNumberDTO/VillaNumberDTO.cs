@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using VLDTO = MagicVilla_Web.Models.VillaDTO;
+using VLDTO = MagicVilla_Web.Models.Models.DTO.VillaDTO;
 
-namespace MagicVilla_Web.Models.VillaNumberDTO
+namespace MagicVilla_Web.Models.Models.DTO.VillaNumberDTO
 {
     public class VillaNumberDTO 
     {

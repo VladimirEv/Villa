@@ -1,11 +1,7 @@
-﻿using MagicVilla_Utility;
-using MagicVilla_Web.Models;
-using MagicVilla_Web.Models.VillaDTO;
+﻿using MagicVilla_Web.Models;
+using MagicVilla_Web.Models.Models.DTO.VillaNumberDTO;
 using MagicVilla_Web.Services.IServices;
-using Microsoft.AspNetCore.Mvc;
 using static MagicVilla_Utility.SD;
-using System;
-using MagicVilla_Web.Models.VillaNumberDTO;
 
 namespace MagicVilla_Web.Services
 {

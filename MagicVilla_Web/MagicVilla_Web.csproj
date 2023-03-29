@@ -11,10 +11,12 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="Cuemon.Extensions.AspNetCore.Mvc.Formatters.Newtonsoft.Json" Version="7.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="7.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.5" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MagicVilla_Utility\MagicVilla_Utility.csproj" />
+    <ProjectReference Include="..\MagicVilla_VillaApi\MagicVilla_VillaApi.csproj" />
   </ItemGroup>
 
 </Project>

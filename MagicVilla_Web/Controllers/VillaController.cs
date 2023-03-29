@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
 using MagicVilla_Web.Models;
-using MagicVilla_Web.Models.VillaDTO;
+using MagicVilla_Web.Models.Models.DTO.VillaDTO;
 using MagicVilla_Web.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace MagicVilla_Web.Controllers
 {
