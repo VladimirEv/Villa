@@ -46,10 +46,12 @@ namespace MagicVilla_Web.Controllers
 				var responce = await _villaService.CreateAsync<APIResponse>(villaCreateDTO);
 				if (responce != null && responce.IsSuccess)
                 {
+                    TempData["success"] = "Villa created successfully";
                     return RedirectToAction(nameof(IndexVilla));
 				}
 			}
-			return View(villaCreateDTO);
+            TempData["error"] = "Error encountered.";
+            return View(villaCreateDTO);
 		}
 
         [HttpGet]
@@ -70,12 +72,14 @@ namespace MagicVilla_Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                TempData["success"] = "Villa updated successfully";
                 var responce = await _villaService.UpdateAsync<APIResponse>(villaUpdateDTO);
                 if (responce != null && responce.IsSuccess)
                 {
                     return RedirectToAction(nameof(IndexVilla));
                 }
             }
+            TempData["error"] = "Error encountered.";
             return View(villaUpdateDTO);
         }
 
@@ -95,11 +99,14 @@ namespace MagicVilla_Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteVilla(VillaDTO villaDTO)
         {
+
                 var responce = await _villaService.DeleteAsync<APIResponse>(villaDTO.Id);
                 if (responce != null && responce.IsSuccess)
                 {
-                    return RedirectToAction(nameof(IndexVilla));
+                     TempData["success"] = "Villa deleted successfully";
+                     return RedirectToAction(nameof(IndexVilla));
                 }
+            TempData["error"] = "Error encountered.";
             return View(villaDTO);
         }
     }
